@@ -12,7 +12,7 @@ public interface IFestivosServicio {
 
     //public Festivos obtenerAño(int año);
 
-    public boolean verificarFestivos(int dia, int mes, int año);
+    public String verificarFestivos(int dia, int mes, int año);
 
     public List<FestivoDto> obtenerFestivosAño(int año);
 
