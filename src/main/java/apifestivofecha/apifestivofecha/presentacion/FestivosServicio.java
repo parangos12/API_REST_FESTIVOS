@@ -20,12 +20,12 @@ public class FestivosServicio implements IFestivosServicio {
     private IFestivosRepositorio festivosRepositorio;
 
     @Override
-    public boolean verificarFestivos(int dia, int mes, int año) {
+    public String verificarFestivos(int dia, int mes, int año) {
         LocalDate fecha = LocalDate.of(año, mes, dia);
         List<Festivos> festivos = festivosRepositorio.findAll();
 
         for (Festivos festivo : festivos) {
-            LocalDate fechaFestiva;
+            LocalDate fechaFestiva=null;
             switch (festivo.getTipo().getId()) {
                 case 1: // Fijo
                     fechaFestiva = LocalDate.of(año, festivo.getMes(), festivo.getDia());
@@ -47,16 +47,14 @@ public class FestivosServicio implements IFestivosServicio {
                         fechaFestiva = fechaFestiva.plusDays(calcularDiasHastaLunes(fechaFestiva));
                     }
                     break;
-                default:
-                    return false;
             }
 
             if (fecha.isEqual(fechaFestiva)) {
-                return true;
+                return "La fecha "+dia+"/"+mes+"/"+año+" "+" y se celebra el festivo: "+festivo.getNombre();
             }
         }
 
-        return false;
+        return "la fecha "+dia+"/"+mes+"/"+año+" "+"no es festivo";
     }
 
     private int calcularDiasHastaLunes(LocalDate fecha) {
