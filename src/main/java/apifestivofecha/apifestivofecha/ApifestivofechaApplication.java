@@ -23,7 +23,7 @@ public class ApifestivofechaApplication {
 
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("https://festivoscolombia.netlify.app"); // Permitir solo solicitudes desde http://localhost:4200
+		config.addAllowedOrigin("https://main--festivoscolombia.netlify.app"); // Permitir solo solicitudes desde http://localhost:4200
 		config.addAllowedMethod("*"); // Permitir todos los métodos (GET, POST, PUT, DELETE, etc.)
 		config.addAllowedHeader("*"); // Permitir todos los encabezados
  
