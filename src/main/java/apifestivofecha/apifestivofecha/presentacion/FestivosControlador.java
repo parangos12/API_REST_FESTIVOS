@@ -27,14 +27,10 @@ import org.springframework.web.bind.annotation.PathVariable;
      public String verificarFestivos(@PathVariable int dia, @PathVariable int mes, @PathVariable int año) {
         if (validarFechaValida(dia, mes, año) == false) {
             return "Fecha No Valida";
-        }else{
-            if(servicio.verificarFestivos(dia, mes, año) == true){
-                return "Es festivo";
-            } else {
-                return "No es festivo";
-            }    
         }
-     }
+            return servicio.verificarFestivos(dia, mes, año);
+        }
+     
 
         @RequestMapping(value = "obtener/{año}", method = RequestMethod.GET)
         public List<FestivoDto> obtenerFestivosAño(@PathVariable int año) {
@@ -49,5 +45,5 @@ public boolean validarFechaValida(int dia, int mes, int año) {
     return false;
 }
 
- }
+}
 
